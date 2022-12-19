@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>สถานะคำร้อง เพิ่ม ถอน รายวิชา</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/checkStatus.js"></script>
+    <style>
+        body {
+            margin-right: auto;
+            margin-left: auto;
+            max-width: 1000px;
+            padding-right: 10px;
+            padding-left: 10px;
+            width: 100%;
+            background-color: lightGray;
+        }
+        
+        .wrapper {
+            max-width: 1000px;
+            padding-right: 10px;
+            padding-left: 10px;
+            background-color: #fff;
+            border-radius: 15px;
+        }
+        
+        table {
+            border-collapse: collapse;
+        }
+        
+        table th {
+            text-align: center;
+            font-size: 14px;
+            background-color: #e3e3e3;
+            color: black;
+            padding: 4px 30px 4px 8px;
+        }
+        
+        table td {
+            border: 1px solid #e3e3e3;
+            padding: 4px 8px;
+            text-align: center;
+        }
+        
+        h3 {
+            text-align: left;
+            font-size: 16px;
+            color: black;
+        }
+    </style>
+</head>
+
+<body onload="loadDoc()">
+    <div class="wrapper">
+        <div class=" table table-responsive table-striped">
+            <h2 align="center">สถานะการยื่นคำร้อง เพิ่ม-ถอน รายวิชา</h2>
+            <hr>
+            <br>
+            <table class="table table-striped">
+                <h3>รายวิชาที่เพิ่ม</h3>
+                <thead>
+                    <tr>
+                        <th>วันที่</th>
+                        <th>รหัสวิชา</th>
+                        <th>section</th>
+                        <th>สถานะ</th>
+                        <th>แก้ไข</th>
+                    </tr>
+                </thead>
+                <tbody id="tableAdd">
+                </tbody>
+
+            </table>
+            <table class="table table-striped">
+                <h3>รายวิชาที่ถอน</h3>
+                <thead>
+                    <tr>
+                        <th>วันที่</th>
+                        <th>รหัสวิชา</th>
+                        <th>section</th>
+                        <th>สถานะ</th>
+                        <th>แก้ไข</th>
+                    </tr>
+                </thead>
+                <tbody id="tableDrop">
+                </tbody>
+
+            </table>
+        </div>
+</body>
+
+</html>

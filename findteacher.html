@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
+    <script src="controller.js"></script>
+    <style>
+        body {
+            font-family: 'Prompt', serif;
+            font-size: 16px;
+            color: black;
+            background-color: lightGray;
+        }
+        
+        #wrapper {
+            text-align: center;
+            width: 1000px;
+            height: 250%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: whitesmoke;
+            padding: 1px;
+            border-radius: 10px;
+        }
+        
+        input[type="text"] {
+            font-family: 'Prompt', serif;
+            background-color: #EAEAEA;
+            border: 1px;
+            border-radius: 7px;
+            color: black;
+            padding: 5px;
+            font-size: 15px;
+            background-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <p style="font-size: 30px;">ค้นหาอาจารย์ประจำวิชา
+            <hr>
+        </p>
+        <br>
+        <form>
+            <p>โปรดระบุรหัสวิชา</p>
+            <input type="text" id="searchsubject" placeholder="enter here" required="">
+            <button type="button" onclick="checkThis()" style="
+			font-family: 'Prompt', serif;
+      		background-color: #EAEAEA;
+      		border: 0px;
+      		border-radius: 7px;
+      		color: black;
+      		padding: 5px;
+      		font-size: 15px;
+      		background-size: 20px;
+      		cursor: pointer;
+      		text-align: center;">ยืนยัน</button>
+        </form>
+        <br><br>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>รายงานปัญหา</title>
+        <meta charset="uft-8" />
+        <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Kanit">
+        <script type="text/javascript" src="controller.js"></script>
+        <style>
+            h1{
+                font-family: "Lato", sans-serif,"Kanit";
+                text-align: center;
+                border-radius: 2em;
+            }
+            body{
+                font-family: "Lato", sans-serif,"Kanit";
+                background-image: linear-gradient(#f1c40f);
+                border-radius: 10px;
+            }
+            textarea {
+            flex: 1 !important;
+            padding-right: 15px !important;
+            padding-left: 1em;
+            text-align: left;
+            border-radius: 2em;
+            }
+            input.button {
+            border-radius: 2em;
+            padding: 0.3em;
+            box-shadow: 0 0 0 0.5pt black/*rgb(255, 136, 0)*/;
+            border: none;
+            background-color: lightGray;
+            color: black;
+            height: 2.5em;
+            width: 10em;
+            font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>รายงานปัญหา-สิ่งที่ต้องการให้ปรับปรุงแก้ไข</h1>
+        <div style="text-align: center">
+        <textarea id="report" style="width:97%; height: 400px; font-size:30px; background-color: lightGray;" required></textarea>
+        </div>
+        <div style="text-align: right">
+            <br>
+            <input class="button"  type="submit" value="ตกลง" onclick="submit()" />
+        </div>    
+    </body>
+</html>

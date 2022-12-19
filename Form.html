@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>คำร้องนักศึกษา</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="controller.js"></script>
+    <style>
+        body {
+            padding: 2em;
+             background-color: lightGray;
+            color: black/*rgb(255, 136, 0)*/;
+            display: block;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        
+        h2 {
+            font-size: 21px;
+            margin: 0;
+        }
+        
+        input {
+            border-radius: 0.5em;
+            border-width: 0;
+            box-shadow: 0 0 0 0.7pt black/*rgb(255, 136, 0)*/;
+            -moz-outline-radius: 0.5em;
+            height: 1.5em;
+            margin: 0.5em;
+            font-size: 16px;
+        }
+        
+        input[type="radio"] {
+            vertical-align: middle;
+        }
+        
+        input[type="date"] {
+            background-color: white;
+            text-align: center;
+        }
+        
+        input[type="datetime-local"] {
+            background-color: white;
+            text-align: center;
+        }
+        
+        input[type="button"] {
+            text-align: center;
+            background-color: white;
+        }
+        
+        label {
+            font-size: 18px;
+            margin: 0;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        select {
+            margin: 0.5em;
+            border-radius: 0.5em;
+            border-width: 0;
+            background-color: white;
+            box-shadow: 0 0 0 1pt black/*rgb(255, 136, 0)*/;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        textarea {
+            vertical-align: top;
+            border-radius: 0.5em;
+            border-width: 0;
+            box-shadow: 0 0 0 1pt black/*rgb(255, 136, 0)*/;
+            margin-left: 2em;
+        }
+        
+        .date {
+            text-align: right;
+        }
+        
+        th,
+        td {
+            padding: 0.3em;
+            box-shadow: 0 0 0 0.5pt black/*rgb(255, 136, 0)*/;
+            text-align: center;
+        }
+        
+        .inputtable {
+            border-radius: 0.5em;
+            border-width: 0;
+            -moz-outline-radius: 0.5em;
+            height: 1.5em;
+            margin: 0.5em;
+            font-size: 16px;
+            box-shadow: none;
+            border-bottom: 0.5px solid black/*orange*/;
+            text-align: center;
+        }
+        
+        input.buttonaccept {
+            border-radius: 2em;
+            padding: 0.3em;
+            box-shadow: 0 0 0 0.5pt black/*rgb(255, 136, 0)*/;
+            border: none;
+            background-color: lightGray;
+            color: black;
+            height: 2.5em;
+            width: 10em;
+            font-size: 18px;
+        }
+        
+        .form {
+            height: auto;
+            width: fit-content;
+            border-radius: 2em;
+            background-color: white;
+            padding: 2em;
+            box-shadow: 0 0 0 2pt #441a4d;
+            margin: auto;
+        }
+        
+        .form-inline {
+            display: flex;
+            padding: 5px !important;
+        }
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+        
+        .flex {
+            flex: 0 100%;
+            display: flex !important;
+        }
+        
+        .flex input {
+            flex: 1 !important;
+            padding-right: 15px !important;
+            text-align: left;
+            padding-left: 1em;
+        }
+        
+        .flex textarea {
+            flex: 1 !important;
+            padding-right: 15px !important;
+            padding-left: 1em;
+            text-align: left;
+        }
+
+        .file-input label {
+          display: block;
+          position: relative;
+          width: 120px;
+          height: 20px;
+          border-radius: 25px;
+          background: lightGray;
+          box-shadow: 0 0 0 0.5pt black/*rgb(255, 136, 0)*/;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: black;
+          font-weight: bold;
+          cursor: pointer;
+          transition: transform .2s ease-out;
+        }
+        .file {
+          opacity: 0;
+          width: 0.1px;
+          height: 0.1px;
+          position: absolute;
+        }
+        .file-name {
+          position: absolute;
+          bottom: -35px;
+          left: 10px;
+          font-size: 0.85rem;
+          color: #555;
+        }
+        input:hover + label,
+        input:focus + label {
+          transform: scale(1.02);
+        }
+
+        input:focus + label {
+          outline: 1px solid #000;
+          outline: -webkit-focus-ring-color auto 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <div align="center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Emblem_of_Thammasat_University.svg/1200px-Emblem_of_Thammasat_University.svg.png" width="110em" height="110em" />
+            <div>
+                <br />
+                <h1><b>คำร้องขอเพิ่ม-ถอน รายวิชา</b></h1>
+            </div>
+            <div>
+                <h2>
+                    <b>คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต</b>
+                </h2>
+            </div>
+            <hr />
+        </div>
+        <form id="myForm" method="POST"><!-- onsubmit="return submitForm(event)" -->
+            <div class="date">
+                <input type="date" id="date" name="date"  required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')"  />
+            </div>
+            <div>
+                <label><b>เรื่อง: คำร้องขอเพิ่ม-ถอน รายวิชา</b></label><br />
+                <label><b>เรียน</b> คณบดีคณะวิทยาศาสตร์และเทคโนโลยี</label><br /><br />
+                <label><b>สิ่งที่ส่งมาด้วย </b>
+          ผลการจดทะเบียนทุกภาคเรียนจากเว็ปไซต์สำนักทะเบียนฯ</label><br /><br />
+            </div>
+            <div class="form-inline">
+                <div class="row">
+                    <div class="form-group flex">
+                        <label>ข้าพเจ้า </label>
+                        <select id="ffname">
+              <option value="นาย">นาย</option>
+              <option value="นาง">นาง</option>
+              <option value="นางสาว">นางสาว</option>
+            </select>   
+                        <label>ชื่อ </label>
+                        <input type="text" id="fname" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                        <label>นามสกุล </label>
+                        <input type="text" id="lname" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                        <label>เลขทะเบียน </label>
+                        <input type="number" id="nostudent" min="5500000000" max="6500000000" required oninvalid="this.setCustomValidity('เลขนักศึกษาผิด')" oninput="this.setCustomValidity('')" />
+                        <label>ชั้นปี </label>
+                        <input type="number" id="nostudentyear" min="1" max="7" required oninvalid="this.setCustomValidity('ชั้นปีผิด')" oninput="this.setCustomValidity('')" />
+                    </div>
+                    <div class="form-group flex">
+                        <label>สาขาวิชา </label>
+                        <input type="text" id="major" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                        <label>ที่อยู่ที่สามารถติดต่อได้ทางไปรษณีย์</label>
+                        <input type="text" id="address" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                        <label>แขวงตำบล </label>
+                        <input type="text" id="tumbol" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                    </div>
+                    <div class="form-group flex">
+                        <label>เขต/อำเภอ </label>
+                        <input type="text" id="amphur" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                        <label>จังหวัด</label>
+                        <input type="text" id="province" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                        <label>รหัสไปรษณีย์</label>
+                        <input type="number" id="postcode" min="10000" max="99999" required oninvalid="this.setCustomValidity('ต้องมี5หลัก')" oninput="this.setCustomValidity('')" />
+                    </div>
+                    <div class="form-group flex">
+                        <label>โทรศัพท์มือถือ</label>
+                        <input type="tel" id="mobilephone" pattern="0[0-9]{9}" required oninvalid="this.setCustomValidity('เบอร์ผิด')" oninput="this.setCustomValidity('')" />
+                        <label>โทรศัพท์ผู้ปกครอง </label>
+                        <input type="tel" id="phone" pattern="0[0-9]{9}" required oninvalid="this.setCustomValidity('เบอร์ผิด')" oninput="this.setCustomValidity('')" />
+                        <label>อาจารย์ที่ปรึกษา </label>
+                        <input type="text" id="teachers" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" /><br />
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label>
+                      <b>มีความประสงค์ขอเพิ่มจำนวน
+                    <input type="button" style="width: 1.5em" onclick="delValue('v_table1');" value="-" />
+                    <label id="v_table1"> 1 </label>
+                    <input type="button" style="width: 1.5em" onclick="addValue('v_table1');" value="+" /> วิชาดังรายการต่อไปนี้
+                    </b>
+                    </label>
+                    <br /><br />
+                </div>
+                <table id="Add" width="100%">
+                    <thead>
+                        <tr>
+                            <th>ลำดับ</th>
+                            <th>รหัสวิชา</th>
+                            <th>ชื่อวิชา</th>
+                            <th>section</th>
+                            <th>วัน/เวลา</th>
+                            <th>หน่วยกิต</th>
+                            <th>ชื่อผู้สอน</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <input class="inputtable" type="text" id="nosubjectA1" size="4" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                            </td>
+                            <td>
+                                <input class="inputtable" type="text" id="namesubjectA1" size="15" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                            </td>
+                            <td>
+                                <input class="inputtable" type="text" id="sectionA1" size="10" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                            </td>
+                            <td>
+                                <input class="inputtable" type="datetime-local" id="datetimeA1" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')"  />
+                            </td>
+                            <td>
+                                <input class="inputtable" type="number" id="valueA1" size="2" style="width: 3em" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                            </td>
+                            <td>
+                                <input class="inputtable" type="text" id="nameteacherA1" size="15" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <label><b>มีความประสงค์ขอถอนจำนวน
+            <input type="button" style="width: 1.5em" onclick="delValue('v_table2');" value="-" />
+            <label id="v_table2"> 1 </label>
+                <input type="button" style="width: 1.5em" onclick="addValue('v_table2');" value="+" /> วิชาดังรายการต่อไปนี้
+                </b>
+                </label><br /><br />
+                <div>
+                    <table id="Drop" width="100%">
+                        <thead>
+                            <tr>
+                                <th>ลำดับ</th>
+                                <th>รหัสวิชา</th>
+                                <th>ชื่อวิชา</th>
+                                <th>section</th>
+                                <th>วัน/เวลา</th>
+                                <th>หน่วยกิต</th>
+                                <th>ชื่อผู้สอน</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <input class="inputtable" type="text" id="nosubjectD1" size="4" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                                </td>
+                                <td>
+                                    <input class="inputtable" type="text" id="namesubjectD1" size="15" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                                </td>
+                                <td>
+                                    <input class="inputtable" type="text" id="sectionD1" size="10" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                                </td>
+                                <td>
+                                    <input class="inputtable" type="datetime-local" id="datetimeD1" />
+                                </td>
+                                <td>
+                                    <input class="inputtable" type="number" id="valueD1" size="2" style="width: 3em" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                                </td>
+                                <td>
+                                    <input class="inputtable" type="text" id="nameteacherD1" size="15" name="s" required oninvalid="this.setCustomValidity('กรุณากรอกข้อมูล')" oninput="this.setCustomValidity('')" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div>
+                <br />
+                <div class="form-inline">
+                    <div class="row">
+                        <div class="form-group flex">
+                            <label><b>เหตุผลเพราะ </b></label>
+                            <textarea id="reason" rows="6em" required></textarea>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+             <div class="form-inline">
+            <b>เอกสารยืนยันจากผู้ปกครอง&nbsp&nbsp&nbsp&nbsp</b>
+            <br>
+            <div class="file-input">
+            <input type="file" id="file" class="file" requiredoninvalid="this.setCustomValidity('กรุณากรอกชื่อนักศึกษา')" oninput="this.setCustomValidity('')" accept=".jpg,.jpeg.png">
+            <label for="file">
+            <p>Choose file</p>
+            <p class="file-name" ></p>
+            </label>
+            </div>
+            </div>
+            <div style="text-align:center; color: red;">
+            <p>*กรุณาตรวจสอบข้อมูลทั้งหมดก่อนกดยืนยัน</p>
+            </div>
+            <div style="text-align: center">
+                <input class="buttonaccept" type="submit" value="ยืนยัน" onclick="submitForm()" />
+            </div>
+        </form><p>
+    </div></p>
+</body>
+
+</html>

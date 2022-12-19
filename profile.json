@@ -1,0 +1,17 @@
+[{
+        "email": "student.stu@dome.tu.ac.th",
+        "password": "1234567890",
+        "nostudent": 6309680053,
+        "firstname": "Pachara",
+        "lastname": "Munngoen",
+        "status": "student"
+    },
+    {
+        "email": "teacher.tea@staff.tu.ac.th",
+        "password": "1234567890",
+        "nostudent": "-",
+        "firstname": "Songsakdi",
+        "lastname": "Rongviriyapanish",
+        "status": "teacher"
+    }
+]

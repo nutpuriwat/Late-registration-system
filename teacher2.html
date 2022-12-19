@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
+    <script src="controller.js"></script>
+    <script src="handleStudentData.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <style>
+        body {
+            font-size: 16px;
+            color: black;
+            background-color: lightGray;
+        }
+        
+        #wrapper {
+            font-family: 'Prompt', serif;
+            text-align: left;
+            width: 1000px;
+            height: 250%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: whitesmoke;
+            padding: 1px;
+            border-radius: 15px;
+        }
+        
+        .info {
+            width: fit-content;
+            border-radius: 7px;
+            background-color: white;
+            padding-left: 12px;
+            padding-right: 12px;
+            margin-left: 150px;
+        }
+        
+        textarea {
+            appearance: none;
+            -webkit-appearance: none;
+            color: #919191;
+            font-family: 'Prompt', serif;
+            font-size: 13px;
+            border: 1px solid white;
+            background: white;
+            border-radius: 10px;
+            padding: 5px;
+            text-align: center;
+        }
+        
+        input[type=submit] {
+            font-family: 'Prompt', serif;
+            background-color: #EAEAEA;
+            border: 0px;
+            border-radius: 7px;
+            color: black;
+            padding: 5px;
+            font-size: 15px;
+            background-size: 20px;
+            cursor: pointer;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <p style="text-align: center; font-size: 30px;"> ติดต่ออาจารย์ที่ปรึกษา
+            <hr>
+        </p>
+        <br>
+        <div class="info">
+            <p> ข้อมูลนักศึกษา </p>
+        </div>
+        <br>
+        <label style="margin-left:50px">ชื่อ:</label>
+        <label id="studentname"></label><br>
+        <label style="margin-left:50px">เลขทะเบียน:</label>
+        <label id="nostudent"></label><br>
+        <label style="margin-left:50px">คณะ:</label>
+        <label id="faculty"></label><br>
+        <label style="margin-left:50px">สาขาวิชา:</label>
+        <label id="major"></label><br>
+        <br>
+        <div class="info">
+            <p>ข้อมูลอาจารย์ที่ปรึกษา</p>
+        </div>
+        <br>
+        <label style="margin-left:50px">ชื่อ</label>
+        <label id="teachername"></label><br>
+
+        <form>
+            <p align="center">
+                <label for="contact">* กรุณากรอกเรื่องที่ต้องการติดต่อ</label>
+                <br>
+                <br>
+                <textarea id="contact" name="contact" rows="10" cols="70" placeholder="Enter here"></textarea>
+                <br>
+                <br>
+                <input type="submit" value="ยืนยัน" onclick="RunThis()">
+            </p>
+        </form>
+    </div>
+</body>
+
+</html>

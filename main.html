@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit">
+</head>
+<style>
+    body {
+        font-family: "Lato", sans-serif, "Kanit";
+        background-image: linear-gradient(#f1c40f, #e74c3c);
+    }
+    
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+    
+    .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+    
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+    
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+    
+    .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #111;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+    }
+    
+    .openbtn:hover {
+        background-color: #444;
+    }
+    
+    .contact {
+        margin: 20px;
+        background: #666666;
+        color: white;
+    }
+    
+    .contact footer {
+        width: 100% cover;
+        height: 30px;
+        background: #222;
+        text-align: center;
+        padding: 15px;
+    }
+    
+    #main {
+        transition: margin-left .5s;
+        padding: 16px;
+    }
+    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+    
+    @media screen and (max-height: 450px) {
+        .sidebar {
+            padding-top: 15px;
+        }
+        .sidebar a {
+            font-size: 18px;
+        }
+    }
+    
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: black;
+    }
+    
+    li {
+        float: left;
+    }
+    
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+    
+    .active {
+        background-color: #04AA6D;
+    }
+</style>
+
+
+</head>
+
+<body>
+    <ul>
+        <li><a href="main.html"> Welcome to Registration : ระบบเพิ่มถอนรายวิชา</a></li>
+    </ul>
+
+    <img src="tulogo2.png" width="100%">
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="Condition.html" target="iframe_a">ยื่นคำร้อง</a>
+        <a href="checkStatus.html" target="iframe_a">สถานะคำร้อง</a>
+        <a href="contact.html" target="iframe_a">ติดต่ออาจารย์</a>
+        <a href="Reported.html" target="iframe_a">รายงานปัญหา</a>
+        <a onclick="LogOut()">ออกจากระบบ</a>
+    </div>
+    <div id="main">
+        <button class="openbtn" onclick="openNav()">MENU ☰ </button>
+
+        <h2>คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต</h2>
+        <p> ยินดีต้อนรับเข้าสู่ระบบ....</p>
+    </div>
+
+    <div id="window">
+        <iframe src="" name="iframe_a" height="700px" width="100%" title="empty" style="border:0"></iframe>
+    </div>
+
+    <div class="contact">
+        <h1>&nbsp&nbsp&nbsp&nbsp&nbspInformation about</h1>
+        <p>&nbsp&nbsp&nbsp99 Moo 18 Paholyothin Road,<br> &nbsp&nbsp&nbspKlong Nueng, Klong Luang,<br> &nbsp&nbsp&nbspPathumthani 12121,<br> &nbsp&nbsp&nbspThailand.
+            <br><br> &nbsp&nbsp&nbspTel. +66 (0) 2613 3333,<br> &nbsp&nbsp&nbsp0-2221-6171-80, 0-2221-6111-20<br></p>
+        <footer>
+            <p>Copyright © 2020 | Group_8</p>
+        </footer>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
+    <script src="logout1.js">
+    </script>
+</body>
+
+</html>
